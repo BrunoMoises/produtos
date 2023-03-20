@@ -2,16 +2,15 @@
 
 namespace App\Entity;
 
-class Pedido {
+class Pedido_item
+{
     private $id;
-    private $produto_id;
-    private $quantidade;
+    private $valor;
 
-    public function __construct($id = '', $produto_id = '', $quantidade = '')
+    public function __construct($id = '', $valor = '')
     {
         $this->id = $id;
-        $this->produto_id = $produto_id;
-        $this->quantidade = $quantidade;
+        $this->valor = $valor;
     }
 
     public function getId()
@@ -26,26 +25,14 @@ class Pedido {
         return $this;
     }
 
-    public function getProduto_id()
+    public function getValor()
     {
-        return $this->produto_id;
+        return $this->valor;
     }
 
-    public function setProduto_id($produto_id)
+    public function setValor($valor)
     {
-        $this->produto_id = $produto_id;
-
-        return $this;
-    }
-
-    public function getQuantidade()
-    {
-        return $this->quantidade;
-    }
-
-    public function setQuantidade($quantidade)
-    {
-        $this->quantidade = $quantidade;
+        $this->valor = $valor;
 
         return $this;
     }
