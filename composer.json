@@ -1,0 +1,17 @@
+{
+    "name": "bruno/pedidos",
+    "description": "Projeto criado para teste de Dev PHP",
+    "liscense": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bruno",
+            "email": "bruno_moises_stz@hotmail.com"
+        }
+    ],
+    "require": {}
+}
