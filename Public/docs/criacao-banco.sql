@@ -1,0 +1,17 @@
+CREATE TABLE produto (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(255) NOT NULL,
+    valorVenda DECIMAL(10,2) NOT NULL,
+    estoque INT NOT NULL,
+    imagens BLOB NOT NULL
+);
+
+CREATE TABLE pedido (
+    id INT NOT NULL AUTO_INCREMENT,
+    produto_id INT NOT NULL,
+    quantidade INT NOT NULL, 
+    PRIMARY KEY ('id', 'produto_id')
+);
+
+ALTER TABLE pedido ADD CONSTRAINT FK_PRODUTO#PEDIDO FOREIGN KEY ('produto_id') 
+REFERENCES produto('id') ON DELETE NO ACTION ON UPDATE NO ACTION;
