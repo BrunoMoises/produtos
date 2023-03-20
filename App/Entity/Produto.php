@@ -8,15 +8,13 @@ class Produto
     private $descricao;
     private $valorVenda;
     private $estoque;
-    private $imagens;
 
-    public function __construct($id = '', $descricao = '', $valorVenda = '', $estoque = '', $imagens = '')
+    public function __construct($id = '', $descricao = '', $valorVenda = '', $estoque = '')
     {
         $this->id = $id;
         $this->descricao = $descricao;
         $this->valorVenda = $valorVenda;
         $this->estoque = $estoque;
-        $this->imagens = $imagens;
     }
 
     public function getId()
@@ -63,18 +61,6 @@ class Produto
     public function setEstoque($estoque)
     {
         $this->estoque = $estoque;
-
-        return $this;
-    }
-
-    public function getImagens()
-    {
-        return $this->imagens;
-    }
-
-    public function setImagens($imagens)
-    {
-        $this->imagens = $imagens;
 
         return $this;
     }
