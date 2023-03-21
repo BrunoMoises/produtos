@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-class Produto
+class Imagens
 {
     private $id;
     private $produto_id;
