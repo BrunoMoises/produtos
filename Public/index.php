@@ -18,14 +18,12 @@
                     <a href="index.php">CRUD Pedidos</a>
                 </div>
                 <div class="col-md-9 text-start">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php">Produtos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pedidos.php">Pedidos</a>
-                        </li>
-                    </ul>
+                    <nav class="nav__container">
+                        <ul class="ul__nav">
+                            <li class="home"><a href="index.php">Produtos</a></li>
+                            <li><a href="pedidos.php">Pedidos</a></li>
+                        </ul>
+                    </nav>
                 </div>
         </header>
         <hr class="border-info">
