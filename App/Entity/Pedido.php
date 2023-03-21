@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-class Pedido_item
+class Pedido
 {
     private $id;
     private $valor;
