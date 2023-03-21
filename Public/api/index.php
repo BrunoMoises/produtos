@@ -80,6 +80,11 @@ switch ($method) {
         }
         break;
     case 'PUT':
+        if ($controller == 'produto' && $id_produto != null) {
+            echo $produtoController->update($id_produto, $data);
+        } else {
+            echo json_encode(["result" => "invalid"]);
+        }
         break;
     case 'DELETE':
         break;
