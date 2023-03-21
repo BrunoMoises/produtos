@@ -132,13 +132,13 @@ class Database
         if ($this->db->affected_rows > 0) {
             $this->getProdutoById();
             $valor = $this->valorVenda * $this->quantidade;
-            $this->updatePedido($this->id_pedido,$valor);
+            $this->updatePedido($this->id_pedido, $valor);
             return true;
         }
         return false;
     }
 
-    public function updatePedido($id_pedido,$valor)
+    public function updatePedido($id_pedido, $valor)
     {
         $this->valor = $valor;
         $this->id_pedido = $id_pedido;
@@ -156,7 +156,7 @@ class Database
 
     function deletePedido()
     {
-        $sqlQuery = "DELETE FROM " . $this->table_pedido_itm . " WHERE id = " . $this->id_produto;
+        $sqlQuery = "DELETE FROM " . $this->table_pedido_itm . " WHERE pedido_id = " . $this->id_pedido;
         $this->db->query($sqlQuery);
         if ($this->db->affected_rows > 0) {
             $sqlQuery = "DELETE FROM " . $this->table_pedido . " WHERE id = " . $this->id_produto;
@@ -164,6 +164,16 @@ class Database
             if ($this->db->affected_rows > 0) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    function deletePedidoItem()
+    {
+        $sqlQuery = "DELETE FROM " . $this->table_pedido_itm . " WHERE pedido_id = " . $this->id_pedido . " AND produto_id = " . $this->id_produto;
+        $this->db->query($sqlQuery);
+        if ($this->db->affected_rows > 0) {
+            return true;
         }
         return false;
     }
