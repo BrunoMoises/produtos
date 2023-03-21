@@ -16,7 +16,6 @@ class ImagensModel
 
     public function __construct()
     {
-        
     }
 
     public function getConnection()
@@ -43,6 +42,9 @@ class ImagensModel
 
         if ($itemCount > 0) {
             while ($row = $records->fetch_assoc()) {
+                $blob = $row['imagem'];
+                $base64 = base64_encode($blob);
+                $row['imagem'] = $base64;
                 array_push($this->listImagens, $row);
             }
         } else {
