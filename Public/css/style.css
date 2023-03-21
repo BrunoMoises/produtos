@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    font-size: 24px;
+}
+
+/*              ICON
+=====================================*/
+.icon {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.icon-x {
+    color: rgb(234, 89, 89);
+}
