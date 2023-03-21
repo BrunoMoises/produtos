@@ -87,6 +87,15 @@ switch ($method) {
         }
         break;
     case 'DELETE':
+        if ($controller == 'produto' && $id_produto != null) {
+            echo $produtoController->delete($id_produto);
+        } else if ($controller == 'pedido' && $id_pedido != null) {
+            echo $pedidoController->delete($id_pedido);
+        } else if ($controller == 'imagens' && $id_imagem != null) {
+            echo $imagensController->delete($id_imagem);
+        } else {
+            echo json_encode(["result" => "invalid"]);
+        }
         break;
     default:
         echo json_encode(["result" => "invalid request"]);
