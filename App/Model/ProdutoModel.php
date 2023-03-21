@@ -12,9 +12,7 @@ class ProdutoModel
     public $database;
     private $db;
     private $items;
-    private $images;
     private $listProduto = [];
-    private $listImagens = [];
 
     public function __construct()
     {
@@ -42,39 +40,28 @@ class ProdutoModel
     {
         $this->db = $this->getConnection();
         $this->items = new Database($this->db);
-        $this->images = new Database($this->db);
 
         $this->items->id_produto = $id_produto;
-        $this->images->id_produto = $id_produto;
         $this->items->getProdutoById();
 
         if ($this->items->descricao != null) {
 
-            $records = $this->images->getImagensById();
-            $itemCount = $records->num_rows;
-
-            if ($itemCount > 0) {
-                while ($row = $records->fetch_assoc()) {
-                    array_push($this->listImagens, $row);
-                }
-                $prod_arr = array(
-                    "id_produto" => $this->items->id_produto,
-                    "descricao" => $this->items->descricao,
-                    "valorVenda" => $this->items->valorVenda,
-                    "estoque" => $this->items->estoque,
-                    "imagens" => $this->listImagens
-                );
-
-                http_response_code(200);
-
-                return json_encode($prod_arr);
-            }
-
-            http_response_code(404);
-            return json_encode(
-                array("message" => "Não encontrado.")
+            $prod_arr = array(
+                "id_produto" => $this->items->id_produto,
+                "descricao" => $this->items->descricao,
+                "valorVenda" => $this->items->valorVenda,
+                "estoque" => $this->items->estoque
             );
+
+            http_response_code(200);
+
+            return json_encode($prod_arr);
         }
+
+        http_response_code(404);
+        return json_encode(
+            array("message" => "Não encontrado.")
+        );
     }
 
     public function create(Produto $produto)
