@@ -43,7 +43,7 @@ class PedidoController
         if ($id <= 0)
             return json_encode(["result" => "invalid id"]);
 
-        return $this->pedidoModel->readById($id);
+        return json_encode($this->pedidoModel->readById($id));
     }
 
     function readAll()
