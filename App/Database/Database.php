@@ -130,21 +130,20 @@ class Database
                             VALUES ('" . $this->id_pedido . "','" . $this->id_produto . "','" . $this->quantidade . "')";
         $this->db->query($sqlQuery);
         if ($this->db->affected_rows > 0) {
-            $this->getProdutoById();
-            $valor = $this->valorVenda * $this->quantidade;
-            $this->updatePedido($this->id_pedido, $valor);
+            $this->updatePedido($this->id_pedido, $this->quantidade);
             return true;
         }
         return false;
     }
 
-    public function updatePedido($id_pedido, $valor)
+    public function updatePedido($id_pedido, $quantidade)
     {
-        $this->valor = $valor;
         $this->id_pedido = $id_pedido;
+        $this->getProdutoById();
+        $this->valor = $this->valorVenda * $quantidade;
 
         $sqlQuery = "UPDATE " . $this->table_pedido . " 
-                    SET valor = valor + " . $this->valor . "'
+                    SET valor = valor + " . $this->valor . "
                     WHERE id = " . $this->id_pedido;
 
         $this->db->query($sqlQuery);
