@@ -41,15 +41,4 @@ class PedidoItemModel
 
         return $this->items->addItemPedido();
     }
-
-    public function delete($id_pedido, $id_produto)
-    {
-        $this->db = $this->getConnection();
-        $this->items = new Database($this->db);
-
-        $this->items->id_pedido = isset($id_pedido) ? $id_pedido : die();
-        $this->items->id_produto = isset($id_produto) ? $id_produto : die();
-
-        return $this->items->deletePedidoItem();
-    }
 }
