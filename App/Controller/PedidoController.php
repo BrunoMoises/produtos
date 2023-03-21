@@ -24,14 +24,13 @@ class PedidoController
         return json_encode(["id" => $this->pedidoModel->create($pedido)]);
     }
 
-    function delete($id = 0)
+    function delete($id_pedido = 0)
     {
-        $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+        $id_pedido = filter_var($id_pedido, FILTER_SANITIZE_NUMBER_INT);
 
-        if ($id <= 0)
+        if ($id_pedido <= 0)
             return json_encode(["result" => "invalid id"]);
-
-        $result = $this->pedidoModel->delete($id);
+        $result = $this->pedidoModel->delete($id_pedido);
 
         return json_encode(["result" => $result]);
     }
