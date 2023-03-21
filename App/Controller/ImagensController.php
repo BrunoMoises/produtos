@@ -23,6 +23,16 @@ class ImagensController
         return json_encode($this->imagensModel->readById($id_produto));
     }
 
+    function readByImageId($id = 0)
+    {
+        $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+
+        if ($id <= 0)
+            return json_encode(["result" => "invalid id"]);
+
+        return $this->imagensModel->readByImageId($id);
+    }
+
     function create($data = null)
     {
         $imagem = $this->convertType($data);
