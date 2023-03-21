@@ -57,6 +57,19 @@ class ImagensModel
         return $this->listImagens;
     }
 
+    public function readByImageId($id)
+    {
+        $this->db = $this->getConnection();
+        $this->items = new Database($this->db);
+
+        $this->items->id_imagem = $id;
+
+        $records = $this->items->getImagemByImageId();
+        $row = $records->fetch_assoc();
+
+        return $row['imagem'];
+    }
+
     public function create(Imagens $pedido_item)
     {
         $this->db = $this->getConnection();
