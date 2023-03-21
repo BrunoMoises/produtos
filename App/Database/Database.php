@@ -184,7 +184,7 @@ class Database
     public function getImagensById()
     {
         $this->id_produto = htmlspecialchars(strip_tags($this->id_produto));
-        $sqlQuery = "SELECT imagem
+        $sqlQuery = "SELECT *
                         FROM " . $this->table_imagens . " 
                         WHERE produto_id = " . $this->id_produto;
         return $this->db->query($sqlQuery);
