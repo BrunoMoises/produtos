@@ -20,7 +20,7 @@ class ImagensController
         if ($id_produto <= 0)
             return json_encode(["result" => "invalid id"]);
 
-        return $this->imagensModel->readById($id_produto);
+        return json_encode($this->imagensModel->readById($id_produto));
     }
 
     function create($data = null)
