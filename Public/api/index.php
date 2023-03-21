@@ -40,6 +40,8 @@ if (isset($ex[1])) {
     } else if ($controller == 'imagens') {
         $id_produto = $ex[1];
         $id_imagem = $ex[1];
+    } else if ($controller == 'pedidoItem') {
+        $id_produto = $ex[1];
     }
 }
 
@@ -65,6 +67,17 @@ switch ($method) {
         }
         break;
     case 'POST':
+        if ($controller == 'produto' && $id_produto == null) {
+            echo $produtoController->create($data);
+        } else if ($controller == 'pedido' && $id_pedido == null) {
+            echo $pedidoController->create($data);
+        } else if ($controller == 'pedidoItem' && $id_produto == null) {
+            echo $pedidoItemController->create($data);
+        } else if ($controller == 'imagens' && $id_produto == null) {
+            echo $imagensController->create($data);
+        } else {
+            echo json_encode(["result" => "invalid"]);
+        }
         break;
     case 'PUT':
         break;
