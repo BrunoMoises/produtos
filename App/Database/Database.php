@@ -103,7 +103,7 @@ class Database
                             ped.quantidade, 
                             p.valorVenda, 
                             (p.valorVenda * ped.quantidade) totalProduto 
-                    FROM " . $this->table_pedido_itm . " 
+                    FROM " . $this->table_pedido_itm . " ped
                     INNER JOIN produto p ON p.id = ped.produto_id
                     WHERE id = " . $this->id_pedido;
         return $this->db->query($sqlQuery);
@@ -183,7 +183,6 @@ class Database
 ---------------------------------------------------*/
     public function getImagensById()
     {
-        $this->id_produto = htmlspecialchars(strip_tags($this->id_produto));
         $sqlQuery = "SELECT *
                         FROM " . $this->table_imagens . " 
                         WHERE produto_id = " . $this->id_produto;
