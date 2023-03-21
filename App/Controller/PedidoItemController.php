@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Pedido_item;
 use App\Model\PedidoItemModel;
 
-class Pedido_itemController
+class PedidoItemController
 {
     private $pedidoItemModel;
     public function __construct()
