@@ -72,7 +72,7 @@ class ProdutoController
         return new Produto(
             null,
             (isset($data['descricao']) ? filter_var($data['descricao'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : null),
-            (isset($data['valor']) ? filter_var($data['valor'], FILTER_SANITIZE_NUMBER_FLOAT) : null),
+            (isset($data['valorVenda']) ? filter_var($data['valorVenda'], FILTER_SANITIZE_NUMBER_FLOAT) : null),
             (isset($data['estoque']) ? filter_var($data['estoque'], FILTER_SANITIZE_NUMBER_INT) : null),
         );
     }
