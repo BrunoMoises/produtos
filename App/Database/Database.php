@@ -178,6 +178,14 @@ class Database
         return $this->db->query($sqlQuery);
     }
 
+    public function getImagemByImageId()
+    {
+        $sqlQuery = "SELECT imagem
+                        FROM " . $this->table_imagens . " 
+                        WHERE id = " . $this->id_imagem;
+        return $this->db->query($sqlQuery);
+    }
+
     public function createImagem()
     {
         $this->id_produto = htmlspecialchars(strip_tags($this->id_produto));
