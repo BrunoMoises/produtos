@@ -25,19 +25,6 @@ class PedidoItemController
         return json_encode(["id" => $this->pedidoItemModel->create($pedido_item)]);
     }
 
-    function delete($pedido_id = 0, $produto_id = 0)
-    {
-        $pedido_id = filter_var($pedido_id, FILTER_SANITIZE_NUMBER_INT);
-        $produto_id = filter_var($produto_id, FILTER_SANITIZE_NUMBER_INT);
-
-        if ($pedido_id <= 0 || $produto_id <= 0)
-            return json_encode(["result" => "invalid id"]);
-
-        $result = $this->pedidoItemModel->delete($pedido_id, $produto_id);
-
-        return json_encode(["result" => $result]);
-    }
-
     private function convertType($data)
     {
         return new Pedido_item(
