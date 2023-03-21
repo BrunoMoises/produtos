@@ -158,21 +158,11 @@ class Database
         $sqlQuery = "DELETE FROM " . $this->table_pedido_itm . " WHERE pedido_id = " . $this->id_pedido;
         $this->db->query($sqlQuery);
         if ($this->db->affected_rows > 0) {
-            $sqlQuery = "DELETE FROM " . $this->table_pedido . " WHERE id = " . $this->id_produto;
+            $sqlQuery = "DELETE FROM " . $this->table_pedido . " WHERE id = " . $this->id_pedido;
             $this->db->query($sqlQuery);
             if ($this->db->affected_rows > 0) {
                 return true;
             }
-        }
-        return false;
-    }
-
-    function deletePedidoItem()
-    {
-        $sqlQuery = "DELETE FROM " . $this->table_pedido_itm . " WHERE pedido_id = " . $this->id_pedido . " AND produto_id = " . $this->id_produto;
-        $this->db->query($sqlQuery);
-        if ($this->db->affected_rows > 0) {
-            return true;
         }
         return false;
     }
