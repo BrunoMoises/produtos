@@ -31,7 +31,7 @@
             <button type="button" class="btn btn-outline-success" id="bt-new">Novo pedido</button>
         </div>
         <div class="row mt-3">
-            <table class="table table-striped-columns table-bordered">
+            <table class="table table-striped-columns table-bordered table-principal">
                 <thead>
                     <tr>
                         <th colspan="2">Codigo</th>
@@ -50,6 +50,65 @@
                     <td><a href="javascript:open_pedido('{{id_pedido}}')">{{Valor}}</a></td>
                 </tr>
             </script>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalVerPedido" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <form id="frmCreate" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="ModalLabel">Criar/Ver Pedido</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <table class="table table-striped-columns table-bordered table-modal">
+                                <thead>
+                                    <tr>
+                                        <th>Descrição</th>
+                                        <th>Quantidade</th>
+                                        <th>Valor un</th>
+                                        <th>Valor total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                            <script id="tmplLinhaModal" type="text/template">
+                                <tr>
+                                    <td>{{Descricao}}</td>
+                                    <td>{{Quantidade}}</td>
+                                    <td>{{Unitario}}</td>
+                                    <td>{{Total}}</td>
+                                </tr>
+                            </script>
+                        </div>
+                        <div id="formCreate">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="txtDescricao">Produto: </label>
+                                    <input type="hidden" id="idPedido" value="">
+                                    <select name="seProd" id="seProd" class="form-control">
+                                        <option value="0">Selecione...</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="txtQuantidade">Quantidade: </label>
+                                    <input type="number" id="txtQuantidade" class="form-control">
+                                </div>
+                                <div class="col-md-3 d-flex aligm-items-center">
+                                    <button type="button" class="btn btn-outline-success" id="btAdd">Adicionar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
