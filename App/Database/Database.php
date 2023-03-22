@@ -81,12 +81,10 @@ class Database
     {
         $sqlQuery = "DELETE FROM " . $this->table_imagens . " WHERE produto_id = " . $this->id_produto;
         $this->db->query($sqlQuery);
+        $sqlQuery = "DELETE FROM " . $this->table_produto . " WHERE id = " . $this->id_produto;
+        $this->db->query($sqlQuery);
         if ($this->db->affected_rows > 0) {
-            $sqlQuery = "DELETE FROM " . $this->table_produto . " WHERE id = " . $this->id_produto;
-            $this->db->query($sqlQuery);
-            if ($this->db->affected_rows > 0) {
-                return true;
-            }
+            return true;
         }
         return false;
     }
