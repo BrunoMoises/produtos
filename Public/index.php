@@ -72,20 +72,20 @@
                             <div class="col-md-3">
                                 <label for="txtDescricao">Descrição: </label>
                                 <input type="hidden" id="idProduto" value="">
-                                <input type="text" id="txtDescricao" readonly>
+                                <input type="text" id="txtDescricao" readonly class="form-control">
                             </div>
                             <div class="col-md-3">
                                 <label for="txtValor">Valor: </label>
-                                <input type="number" id="txtValor" readonly>
+                                <input type="number" id="txtValor" readonly class="form-control">
                             </div>
                             <div class="col-md-3">
                                 <label for="txtEstoque">Estoque: </label>
-                                <input type="number" id="txtEstoque" readonly>
+                                <input type="number" id="txtEstoque" readonly class="form-control">
                             </div>
                         </div>
                         <div class="row d-none" id="divImg">
                             <label for="txtEstoque">Imagem: </label>
-                            <input type="file" id="fileImg">
+                            <input type="file" id="fileImg" class="form-control">
                             <button type="button" id="addImg" class="btn btn-outline-success w-25" data-bs-dismiss="modal" onclick="saveImage()">Adicionar</button>
                         </div>
                         <div class="row images">
