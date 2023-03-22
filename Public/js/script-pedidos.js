@@ -119,6 +119,14 @@ function open_pedido(id_pedido) {
     $('#formCreate').addClass('d-none');
 }
 
+function deletePedido(id) {
+    if (confirm("Deseja realmente remover?")) {
+        deleteId(id);
+    } else {
+        return;
+    }
+}
+
 function create(obj) {
     $.ajax({
         url: "api/pedido/",
@@ -152,7 +160,6 @@ function createItem(obj) {
             $('#btAdd').attr("disabled", true);
         },
         success: function () {
-            alert(obj.pedido_id);
             readById(obj.pedido_id);
         },
         error: function () {
@@ -201,6 +208,20 @@ function readById(id) {
         },
         error: function () {
             alert("Houve um erro na busca");
+        }
+    });
+}
+
+function deleteId(id) {
+    $.ajax({
+        url: "api/pedido/" + id,
+        type: "DELETE",
+        dataType: "json",
+        success: function () {
+            readAll();
+        },
+        error: function () {
+            alert("Houve um erro na deleção.");
         }
     });
 }
