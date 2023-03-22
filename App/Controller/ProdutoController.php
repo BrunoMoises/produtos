@@ -49,7 +49,7 @@ class ProdutoController
 
         $result = $this->produtoModel->delete($id);
 
-        return json_encode(["result" => $result]);
+        return $result;
     }
 
     function readById($id = 0)
