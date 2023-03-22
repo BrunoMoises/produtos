@@ -52,7 +52,7 @@ class Database
                             VALUES ('" . $this->descricao . "','" . $this->valorVenda . "','" . $this->estoque . "')";
         $this->db->query($sqlQuery);
         if ($this->db->affected_rows > 0) {
-            return mysqli_insert_id($this->db);
+            return $this->db->insert_id;
         }
         return false;
     }
