@@ -12,7 +12,13 @@ $('#bt-new').click(function () {
     createPedido();
 });
 
+$('.btClose').click(function () {
+    readAll();
+});
+
 $('#btAdd').click(function () {
+    if ($('#seProd').val() == 0)
+        return alert("Favor informar o produto que deseja adicionar");
     addProduto();
 });
 
@@ -76,7 +82,7 @@ function createTable(data) {
     }
 }
 
-function createTableModal(data) {
+function createTableModal(data, reset) {
     if (data.length < 1)
         return;
 
@@ -100,8 +106,10 @@ function createTableModal(data) {
 
         tabela.appendChild(linha.content);
     }
+    $('#seProd').val("0");
+    $('#txtQuantidade').val("");
 
-    openModalView();
+    openModalView(reset);
 }
 
 function createSelect(data) {
@@ -160,7 +168,7 @@ function createItem(obj) {
             $('#btAdd').attr("disabled", true);
         },
         success: function () {
-            readById(obj.pedido_id);
+            readById(obj.pedido_id, false);
         },
         error: function () {
             alert("Houve um erro no cadastro");
@@ -198,13 +206,13 @@ function readAll() {
     });
 }
 
-function readById(id) {
+function readById(id, reset) {
     $.ajax({
         url: "api/pedido/" + id,
         type: "GET",
         dataType: "json",
         success: function (data) {
-            createTableModal(data);
+            createTableModal(data, reset);
         },
         error: function () {
             alert("Houve um erro na busca");
