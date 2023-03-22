@@ -21,7 +21,7 @@ class PedidoController
             return json_encode(["result" => $result]);
         }
 
-        return json_encode(["id" => $this->pedidoModel->create($pedido)]);
+        return $this->pedidoModel->create($pedido);
     }
 
     function delete($id_pedido = 0)
@@ -62,9 +62,6 @@ class PedidoController
     {
         if ($update && $pedido->getId() <= 0)
             return "invalid id";
-
-        if ($pedido->getValor() <= 0)
-            return "invalid valor";
 
         return "";
     }
