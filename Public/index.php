@@ -64,24 +64,23 @@
             <form id="frmCreate" method="post">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="ModalLabel">Produto</h1>
+                        <h1 class="modal-title fs-5" id="ModalLabel">Produto&nbsp;&nbsp;<i class="bi-pencil-fill icon icon-edit pointer" title="Editar produto" aria-multiline="Editar produto" id="btEdit" onclick="editaProdutoView()"></i></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-3">
-                                <i class="bi-pencil-fill icon icon-edit pointer" title="Editar produto" aria-multiline="Editar produto" onclick="editaProdutoView()"></i>
                                 <label for="txtDescricao">Descrição: </label>
                                 <input type="hidden" id="idProduto" value="">
                                 <input type="text" id="txtDescricao" readonly>
                             </div>
                             <div class="col-md-3">
                                 <label for="txtValor">Valor: </label>
-                                <input type="email" id="txtValor" readonly>
+                                <input type="number" id="txtValor" readonly>
                             </div>
                             <div class="col-md-3">
                                 <label for="txtEstoque">Estoque: </label>
-                                <input type="email" id="txtEstoque" readonly>
+                                <input type="number" id="txtEstoque" readonly>
                             </div>
                         </div>
                         <div class="row d-none" id="divImg">
@@ -91,7 +90,7 @@
                         </div>
                         <div class="row images">
                             <label>Imagens: </label>
-                            <i class="bi-file-plus-fill icon icon-edit pointer" title="Adicionar imagem" aria-multiline="Adicionar imagem" onclick="addImage()"></i>
+                            <i class="bi-file-plus-fill icon icon-edit pointer" title="Adicionar imagem" aria-multiline="Adicionar imagem" id="addImage" onclick="addImage()"></i>
                             <div id="divImagens" class="justify-content-center d-flex">
                             </div>
                         </div>
