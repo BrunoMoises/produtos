@@ -26,9 +26,9 @@
                     </nav>
                 </div>
         </header>
-        <hr class="border-info">
+        <hr class="border-success">
         <div>
-            <button type="button" class="btn btn-outline-info" id="bt-new">Novo produto</button>
+            <button type="button" class="btn btn-outline-success" id="bt-new">Novo produto</button>
         </div>
         <div class="row mt-3">
             <table class="table table-striped-columns table-bordered">
@@ -51,13 +51,52 @@
                     <td width="10"><i class="bi-pencil-fill icon icon-edit pointer" title="Editar produto"
                             aria-multiline="Editar produto" onclick="editaProduto('{{id_produto}}')"></i></td>
                     <td align="center" width="40">{{id_produto}}</td>
-                    <td>{{Descricao}}</td>
+                    <td><a href="javascript:open_produto('{{id_produto}}')">{{Descricao}}</a></td>
                     <td>{{Valor}}</td>
                     <td>{{Estoque}}</td>
                 </tr>
             </script>
         </div>
     </div>
+
+    <div class="modal fade" id="modalVerProduto" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <form id="frmCreate" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="ModalLabel">Produto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="txtDescricao">Descrição: </label>
+                                <input type="hidden" id="idProduto" value="">
+                                <input type="text" id="txtDescricao" readonly>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="txtValor">Valor: </label>
+                                <input type="email" id="txtValor" readonly>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="txtEstoque">Estoque: </label>
+                                <input type="email" id="txtEstoque" readonly>
+                            </div>
+                        </div>
+                        <div class="row images">
+                            <label>Imagens: </label>
+                            <div id="divImagens" class="justify-content-center d-flex">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="js/handlebars.js"></script>
     <script src="js/jquery-3.6.3.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
