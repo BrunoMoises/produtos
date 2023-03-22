@@ -21,7 +21,7 @@ class ProdutoController
             return json_encode(["result" => $result]);
         }
 
-        return json_encode(["id" => $this->produtoModel->create($produto)]);
+        return $this->produtoModel->create($produto);
     }
 
     function update($id_produto = 0, $data = null)
