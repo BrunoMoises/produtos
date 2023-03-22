@@ -189,7 +189,6 @@ class Database
     public function createImagem()
     {
         $this->id_produto = htmlspecialchars(strip_tags($this->id_produto));
-        $this->imagem = htmlspecialchars(strip_tags($this->imagem));
         $nomeFinal = time() . '.jpg';
         if (move_uploaded_file($this->imagem['tmp_name'], $nomeFinal)) {
             $tamanhoImg = filesize($nomeFinal);
