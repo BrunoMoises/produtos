@@ -81,6 +81,11 @@ function deleteImagem(id, id_produto) {
     }
 }
 
+function editaProduto(id) {
+    open_produto(id);
+    editaProdutoView();
+}
+
 function editaProdutoView() {
     $('#btEdit').addClass('d-none');
     $('#addImage').addClass('d-none');
@@ -261,6 +266,28 @@ function deleteId(id) {
         },
         error: function () {
             alert("Houve um erro na deleção.");
+        }
+    });
+}
+
+function update(obj) {
+    $.ajax({
+        url: "api/produto/" + obj.id_produto,
+        type: "PUT",
+        data: obj,
+        dataType: "json",
+        beforeSend: function () {
+            $('#btnSubmit').attr("disabled", true);
+        },
+        success: function () {
+            closeModalView();
+            readAll();
+        },
+        error: function () {
+            alert("Houve um erro ao atualizar");
+        },
+        complete: function () {
+            $('#btnSubmit').attr("disabled", false);
         }
     });
 }
