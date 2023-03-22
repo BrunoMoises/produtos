@@ -59,7 +59,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="ModalLabel">Criar/Ver Pedido</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btClose" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -99,13 +99,13 @@
                                     <input type="number" id="txtQuantidade" class="form-control">
                                 </div>
                                 <div class="col-md-3 d-flex aligm-items-center">
-                                    <button type="button" class="btn btn-outline-success" id="btAdd">Adicionar</button>
+                                    <button type="button" class="btn btn-outline-success" id="btAdd" class="form-control">Adicionar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-outline-danger btClose" data-bs-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </form>
