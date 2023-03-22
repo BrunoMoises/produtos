@@ -107,7 +107,7 @@ class Database
                             (p.valorVenda * ped.quantidade) totalProduto 
                     FROM " . $this->table_pedido_itm . " ped
                     INNER JOIN produto p ON p.id = ped.produto_id
-                    WHERE id = " . $this->id_pedido;
+                    WHERE pedido_id = " . $this->id_pedido;
         return $this->db->query($sqlQuery);
     }
 
@@ -118,7 +118,7 @@ class Database
                             VALUES ('" . $this->valor . "')";
         $this->db->query($sqlQuery);
         if ($this->db->affected_rows > 0) {
-            return mysqli_insert_id($this->db);
+            return $this->db->insert_id;
         }
         return false;
     }
