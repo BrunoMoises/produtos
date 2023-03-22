@@ -35,14 +35,7 @@ class ImagensController
 
     function create($data = null)
     {
-        $imagem = $this->convertType($data);
-        $result = $this->validate($imagem);
-
-        if ($result != "") {
-            return json_encode(["result" => $result]);
-        }
-
-        return json_encode(["id" => $this->imagensModel->create($imagem)]);
+        return $this->imagensModel->create($data);
     }
 
     function delete($id_imagem = 0)
@@ -55,28 +48,5 @@ class ImagensController
         $result = $this->imagensModel->delete($id_imagem);
 
         return json_encode(["result" => $result]);
-    }
-
-    private function convertType($data)
-    {
-        return new Imagens(
-            null,
-            (isset($data['produto_id']) ? filter_var($data['produto_id'], FILTER_SANITIZE_NUMBER_INT) : null),
-            (isset($data['imagem']) ? filter_var($data['imagem']) : null),
-        );
-    }
-
-    private function validate(Imagens $imagem, $update = false)
-    {
-        if ($update && $imagem->getId() <= 0)
-            return "invalid id";
-
-        if ($imagem->getProduto_id() <= 0)
-            return "invalid produto";
-
-        if ($imagem->getImagem() == "")
-            return "invalid imagem";
-
-        return "";
     }
 }
