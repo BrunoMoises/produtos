@@ -135,6 +135,14 @@ function saveImage() {
     createImg(obj);
 }
 
+function deleteProduto(id) {
+    if (confirm("Deseja realmente remover?")) {
+        deleteId(id);
+    } else {
+        return;
+    }
+}
+
 function create(obj) {
     $.ajax({
         url: "api/produto/",
@@ -239,6 +247,20 @@ function deleteImagemId(id, id_produto) {
         },
         error: function () {
             alert("Houve um erro na deleção");
+        }
+    });
+}
+
+function deleteId(id) {
+    $.ajax({
+        url: "api/produto/" + id,
+        type: "DELETE",
+        dataType: "json",
+        success: function (data) {
+            readAll();
+        },
+        error: function () {
+            alert("Houve um erro na deleção.");
         }
     });
 }
