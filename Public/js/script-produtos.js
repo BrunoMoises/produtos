@@ -132,10 +132,10 @@ function open_produto(id_produto) {
 }
 
 function saveImage() {
-    var obj = {
-        produto_id: $('#idProduto').val(),
-        imagem: $('#fileImg').val()
-    };
+    var obj = new FormData();
+    var file = document.getElementById("fileImg").files[0];
+    obj.append('file', file);
+    obj.append('produto_id', $('#idProduto').val());
 
     createImg(obj);
 }
@@ -177,19 +177,17 @@ function create(obj) {
 
 function createImg(obj) {
     $.ajax({
-        url: "api/imagens/",
+        url: "api/api-imagem.php",
         type: "POST",
         data: obj,
-        dataType: "json",
+        processData: false,
+        contentType: false,
         beforeSend: function () {
             $('#addImg').attr("disabled", true);
         },
-        success: function (data) {
-            if (data.result) {
-                open_produto(obj.produto_id);
-            } else {
-                alert("Houve um erro no cadastro");
-            }
+        success: function () {
+            open_produto(obj.get('produto_id'));
+            $('#fileImg').val('');
         },
         error: function () {
             alert("Houve um erro no cadastro");
