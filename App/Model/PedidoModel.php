@@ -93,11 +93,6 @@ class PedidoModel
             while ($row = $records->fetch_assoc()) {
                 array_push($this->listPedido, $row);
             }
-        } else {
-            http_response_code(404);
-            return json_encode(
-                array("message" => "Não encontrado.")
-            );
         }
     }
 }
