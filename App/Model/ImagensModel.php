@@ -65,15 +65,12 @@ class ImagensModel
         return $row['imagem'];
     }
 
-    public function create(Imagens $imagem)
+    public function create($data)
     {
         $this->db = $this->getConnection();
         $this->items = new Database($this->db);
 
-        $this->items->id_produto = $imagem->getProduto_id();
-        $this->items->imagem = $imagem->getImagem();
-
-        return $this->items->createImagem();
+        return $this->items->createImagem($data);
     }
 
     public function delete($id_imagem)
