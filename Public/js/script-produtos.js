@@ -4,6 +4,10 @@ $(document).ready(function () {
     readAll();
 });
 
+$('#addImg').click(function () {
+    
+});
+
 function openModalView() {
     $('#modalVerProduto').modal('show');
 }
@@ -37,12 +41,23 @@ function insertImagens(data) {
     openModalView();
 }
 
-function deleteImagem(id,id_produto) {
+function deleteImagem(id, id_produto) {
     if (confirm("Deseja realmente remover?")) {
-        deleteImagemId(id,id_produto);
+        deleteImagemId(id, id_produto);
     } else {
         return;
     }
+}
+
+function editaProdutoView() {
+    $('#txtDescricao').attr('readonly', false);
+    $('#txtValor').attr('readonly', false);
+    $('#txtEstoque').attr('readonly', false);
+    $('#btnSubmit').removeClass('d-none');
+}
+
+function addImage() {
+    $('#divImg').removeClass('d-none');
 }
 
 function createTable(data) {
@@ -75,6 +90,40 @@ function open_produto(id_produto) {
     readById(id_produto);
 }
 
+function saveImage() {
+    var obj = {
+        produto_id: $('#idProduto').val(),
+        imagem: $('#fileImg').val()
+    };
+
+    createImg(obj);
+}
+
+function createImg(obj) {
+    $.ajax({
+        url: "api/imagens/",
+        type: "POST",
+        data: obj,
+        dataType: "json",
+        beforeSend: function () {
+            $('#addImg').attr("disabled", true);
+        },
+        success: function (data) {
+            if (data.result) {
+                open_produto(obj.produto_id);
+            } else {
+                alert("Houve um erro no cadastro");
+            }
+        },
+        error: function () {
+            alert("Houve um erro no cadastro");
+        },
+        complete: function () {
+            $('#addImg').attr("disabled", false);
+        }
+    });
+}
+
 function readAll() {
     $.ajax({
         url: "api/produto",
@@ -97,6 +146,9 @@ function readById(id) {
         dataType: "json",
         success: function (data) {
             createModalView(data);
+        },
+        error: function () {
+            alert("Houve um erro na busca");
         }
     });
 }
@@ -112,7 +164,7 @@ function readImagesById(id) {
     });
 }
 
-function deleteImagemId(id,id_produto) {
+function deleteImagemId(id, id_produto) {
     $.ajax({
         url: "api/imagens/" + id,
         type: "DELETE",
