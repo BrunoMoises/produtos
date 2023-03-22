@@ -47,11 +47,6 @@ class ImagensModel
                 $row['imagem'] = $base64;
                 array_push($this->listImagens, $row);
             }
-        } else {
-            http_response_code(404);
-            return json_encode(
-                array("message" => "Não encontrado.")
-            );
         }
 
         return $this->listImagens;
@@ -70,13 +65,13 @@ class ImagensModel
         return $row['imagem'];
     }
 
-    public function create(Imagens $pedido_item)
+    public function create(Imagens $imagem)
     {
         $this->db = $this->getConnection();
         $this->items = new Database($this->db);
 
-        $this->items->id_produto = $pedido_item->getProduto_id();
-        $this->items->imagem = $pedido_item->getImagem();
+        $this->items->id_produto = $imagem->getProduto_id();
+        $this->items->imagem = $imagem->getImagem();
 
         return $this->items->createImagem();
     }
