@@ -13,8 +13,14 @@ a {
     color: rgba(205, 207, 205, 0.5);
 }
 
-a:hover {
+a:hover,
+td a {
     color: #ffffff;
+}
+
+.images img {
+    margin-left: 20px;
+    margin-right: 5px;
 }
 
 /*              ICON
