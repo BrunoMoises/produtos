@@ -4,15 +4,47 @@ $(document).ready(function () {
     readAll();
 });
 
-$('#addImg').click(function () {
-    
+$('#bt-new').click(function () {
+    openModalView();
+    editaProdutoView();
 });
 
-function openModalView() {
+$('#frmCreate').submit(function (e) {
+    sendForm();
+    e.preventDefault();
+});
+
+function sendForm() {
+    var obj = {
+        id_produto: $('#idProduto').val(),
+        descricao: $('#txtDescricao').val(),
+        valorVenda: $('#txtValor').val(),
+        estoque: $('#txtEstoque').val()
+    };
+
+    if (obj.id_produto == 0) {
+        create(obj);
+    } else {
+        update(obj);
+    }
+}
+
+function resetForm() {
+    $('#idProduto').val("");
+    $('#txtDescricao').val("");
+    $('#txtValor').val("");
+    $('#txtEstoque').val("");
+    $('#divImagens').html("");
+}
+
+function openModalView(reset = true) {
+    if (reset)
+        resetForm();
     $('#modalVerProduto').modal('show');
 }
 
 function closeModalView() {
+    resetForm();
     $('#modalVerProduto').modal('hide');
 }
 
@@ -38,7 +70,7 @@ function insertImagens(data) {
         $('#divImagens').append("<img src='getImagem.php?id=" + data[i].id + "' \"><i class='bi-x-circle-fill icon icon-x pointer' title='Excluir imagem' aria-multiline='Excluir imagem' onclick='deleteImagem(" + data[i].id + "," + data[i].produto_id + ")'></i>");
     }
 
-    openModalView();
+    openModalView(false);
 }
 
 function deleteImagem(id, id_produto) {
@@ -50,6 +82,8 @@ function deleteImagem(id, id_produto) {
 }
 
 function editaProdutoView() {
+    $('#btEdit').addClass('d-none');
+    $('#addImage').addClass('d-none');
     $('#txtDescricao').attr('readonly', false);
     $('#txtValor').attr('readonly', false);
     $('#txtEstoque').attr('readonly', false);
@@ -88,6 +122,8 @@ function createTable(data) {
 
 function open_produto(id_produto) {
     readById(id_produto);
+    $('#btEdit').removeClass('d-none');
+    $('#addImage').removeClass('d-none');
 }
 
 function saveImage() {
@@ -97,6 +133,33 @@ function saveImage() {
     };
 
     createImg(obj);
+}
+
+function create(obj) {
+    $.ajax({
+        url: "api/produto/",
+        type: "POST",
+        data: obj,
+        dataType: "json",
+        beforeSend: function () {
+            $('#btnSubmit').attr("disabled", true);
+        },
+        success: function (data) {
+            if (data != false) {
+                open_produto(data);
+                addImage();
+                readAll();
+            } else {
+                alert("Houve um erro no cadastro");
+            }
+        },
+        error: function () {
+            alert("Houve um erro no cadastro");
+        },
+        complete: function () {
+            $('#btnSubmit').attr("disabled", false);
+        }
+    });
 }
 
 function createImg(obj) {
