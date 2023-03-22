@@ -188,9 +188,10 @@ class Database
         return $this->db->query($sqlQuery);
     }
 
-    public function createImagem()
+    public function createImagem($data)
     {
-        $this->id_produto = htmlspecialchars(strip_tags($this->id_produto));
+        $this->id_produto = htmlspecialchars(strip_tags($data['produto_id']));
+        $this->imagem = $data['imagem'];
         $nomeFinal = time() . '.jpg';
         if (move_uploaded_file($this->imagem['tmp_name'], $nomeFinal)) {
             $tamanhoImg = filesize($nomeFinal);
@@ -199,12 +200,10 @@ class Database
 
             $sqlQuery = "INSERT INTO " . $this->table_imagens . " (produto_id,imagem) VALUES ('" . $this->id_produto . "','$mysqlImg')";
             $this->db->query($sqlQuery);
-            if ($this->db->affected_rows > 0) {
-                unlink($nomeFinal);
-                return true;
-            }
-            return false;
+            unlink($nomeFinal);
+            return true;
         }
+        return false;
     }
 
     function deleteImagem()
