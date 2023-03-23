@@ -90,7 +90,7 @@
                                 <div class="col-md-3">
                                     <label for="txtDescricao">Produto: </label>
                                     <input type="hidden" id="idPedido" value="">
-                                    <select name="seProd" id="seProd" class="form-control">
+                                    <select name="seProd" id="seProd" class="form-select">
                                         <option value="0">Selecione...</option>
                                     </select>
                                 </div>
