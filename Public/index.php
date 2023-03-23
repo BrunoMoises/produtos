@@ -83,15 +83,14 @@
                                 <input type="number" id="txtEstoque" readonly class="form-control">
                             </div>
                         </div>
-                        <div class="row d-none" id="divImg">
+                        <div class="d-none input-group w-50" id="divImg">
                             <label for="txtEstoque">Imagem: </label>
-                            <input type="file" id="fileImg" class="form-control w-25" accept="image/png, image/jpeg">
-                            <button type="button" id="addImg" class="btn btn-outline-success w-25" data-bs-dismiss="modal" onclick="saveImage()">Adicionar</button>
+                            <input type="file" id="fileImg" class="form-control" accept="image/png, image/jpeg" aria-describedby="addImg" aria-label="Upload">
+                            <button type="button" id="addImg" class="btn btn-outline-success" onclick="saveImage()">Adicionar</button>
                         </div>
                         <div class="row images">
-                            <label>Imagens: </label>
-                            <i class="bi-file-plus-fill icon icon-edit pointer" title="Adicionar imagem" aria-multiline="Adicionar imagem" id="addImage" onclick="addImage()"></i>
-                            <div id="divImagens" class="justify-content-center d-flex h-auto">
+                            <label>Imagens: <i class="bi-file-plus-fill icon icon-edit pointer" title="Adicionar imagem" aria-multiline="Adicionar imagem" id="addImage" onclick="addImage()"></i></label>
+                            <div id="divImagens" class="justify-content-center d-flex flex-wrap">
                             </div>
                         </div>
                     </div>
