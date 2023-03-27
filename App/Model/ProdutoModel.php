@@ -112,11 +112,6 @@ class ProdutoModel
             while ($row = $records->fetch_assoc()) {
                 array_push($this->listProduto, $row);
             }
-        } else {
-            http_response_code(404);
-            return json_encode(
-                array("message" => "Não encontrado.")
-            );
         }
     }
 }
