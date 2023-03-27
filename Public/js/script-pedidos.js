@@ -113,12 +113,14 @@ function createTableModal(data, reset) {
 }
 
 function createSelect(data) {
+    $('#seProd').empty();
+    $('#seProd').append('<option value="0">Selecione...</option>');
     for (var i = 0; i < data.length; i++) {
         var produto = {};
         produto.id_produto = data[i].id;
         produto.Descricao = data[i].descricao;
 
-        $('#seProd').append('<option value"' + data[i].id + '">' + data[i].descricao + '</option>');
+        $('#seProd').append('<option value="' + data[i].id + '">' + data[i].descricao + '</option>');
     }
 }
 
